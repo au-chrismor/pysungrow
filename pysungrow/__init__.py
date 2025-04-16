@@ -1,5 +1,6 @@
 import logging
 from sglogin import sglogin
+from sgservicelist import sgservicelist
 
 
 APP_KEY=None
@@ -11,7 +12,7 @@ DEV_LIST=None
 INVERTER_DATA=None
 
 class PySungrow:
-    def __init__(appKey=None, secretKey=None, url=None):
+    def __init__(self, appKey=None, secretKey=None, url=None):
         if url is not None:
             URL=url
         LOGIN = f'{URL}/openapi/login'
@@ -31,6 +32,9 @@ class PySungrow:
 
 
 
-    def login(user_account, user_password):
-        return sglogin(APP_KEY, SECRET_KEY, user_account, user_password, LOGIN)
-    
+    def login(self, user_account, user_password):
+        return sglogin(app_key=APP_KEY, secret_key=SECRET_KEY, user_account=user_account, user_password=user_password, url=LOGIN)
+
+
+    def service_list(self, token):
+        return sgservicelist(app_key=APP_KEY, secret_key=SECRET_KEY, token=token, url=PS_LIST)
