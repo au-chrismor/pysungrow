@@ -32,7 +32,7 @@ class PySungrow:
             logging.error('PySungrow: secret_key MUST be specified')
 
 
-    def login(self, app_key, user_account, user_password):
+    def login(self, user_account, user_password):
         return sglogin(app_key=APP_KEY, secret_key=SECRET_KEY, user_account=user_account, user_password=user_password, url=LOGIN)
 
 
