@@ -1,4 +1,3 @@
-from . import APP_KEY, SECRET_KEY
 import requests
 
 def sglogin(app_key, secret_key, user_account, user_password, url=None):
