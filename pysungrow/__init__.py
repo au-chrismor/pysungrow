@@ -1,6 +1,7 @@
 import logging
 from sglogin import sglogin
 from sgservicelist import sgservicelist
+from sgdevicelist import sgdevicelist
 
 
 APP_KEY=None
@@ -33,8 +34,12 @@ class PySungrow:
 
 
     def login(self, user_account, user_password):
-        return sglogin(app_key=APP_KEY, secret_key=SECRET_KEY, user_account=user_account, user_password=user_password, url=LOGIN)
+        return sglogin(self, secret_key=SECRET_KEY, user_account=user_account, user_password=user_password, url=LOGIN)
 
 
     def service_list(self, token):
-        return sgservicelist(app_key=APP_KEY, secret_key=SECRET_KEY, token=token, url=PS_LIST)
+        return sgservicelist(self, secret_key=SECRET_KEY, token=token, url=PS_LIST)
+
+
+    def device_list(self, token, ps_id):
+        return sgdevicelist(app_key=APP_KEY, secret_key=SECRET_KEY, token=token, ps_id=ps_id, url=DEV_LIST)
