@@ -2,6 +2,7 @@ import logging
 from sglogin import sglogin
 from sgservicelist import sgservicelist
 from sgdevicelist import sgdevicelist
+from sginverterdata import sginverterdata
 
 
 APP_KEY=None
@@ -32,13 +33,18 @@ class PySungrow:
             logging.error('PySungrow: secret_key MUST be specified')
 
 
-    def login(self, app_key, user_account, user_password):
+    def login(self, user_account=None, user_password=None):
         return sglogin(app_key=APP_KEY, secret_key=SECRET_KEY, user_account=user_account, user_password=user_password, url=LOGIN)
 
 
-    def service_list(self, token):
+    def service_list(self, token=None):
         return sgservicelist(app_key=APP_KEY, secret_key=SECRET_KEY, token=token, url=PS_LIST)
 
 
-    def device_list(self, token, ps_id):
+    def device_list(self, token=None, ps_id=None):
         return sgdevicelist(app_key=APP_KEY, secret_key=SECRET_KEY, token=token, ps_id=ps_id, url=DEV_LIST)
+
+
+    def inverter_data(self, token=None, ps_id=None, ser_num=None, ps_key=None):
+        return sginverterdata(app_key=APP_KEY, secret_key=SECRET_KEY, token=token, ps_id=ps_id, ser_num=ser_num, ps_key=ps_key, url=INVERTER_DATA)
+
